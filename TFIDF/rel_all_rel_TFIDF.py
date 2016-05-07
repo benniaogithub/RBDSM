@@ -22,8 +22,8 @@ def getRelList():
     return rellist
 
 def rel_30_ref_TFIDF():                      #每个relation-ref 表做一次tfidf
-    relpath = u"I:/数据/word11247relation30/rel_30_ref_all_mat/rel_30_ref_all_mat/result.mat"
-    dest = u"I:/数据/word11247relation30/rel_30_ref_all_mat/rel_30_ref_all_mat/"
+    relpath = u"I:/数据/word11247relation30/sum_rel_ref_mat/result.mat"
+    dest = u"I:/数据/word11247relation30/sum_rel_ref_mat/"
     if not os.path.exists(dest):
                 os.makedirs(dest)
     rellist = getRelList()
