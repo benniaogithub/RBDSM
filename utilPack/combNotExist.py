@@ -9,7 +9,7 @@
 """
 
 def getWordList():
-    rfile = open("../res/none.txt")
+    rfile = open("../res/vocabAdd.txt")
     wordList = []
     for line in rfile:
         word = line.strip("\n")
@@ -30,7 +30,17 @@ def combine():
         word  = line.strip()
         if(word not in wordlist):
             wordlist.append(word)
-    wfile = open("../res/wordNotExist3.txt","w")
+    wfile = open("../res/wordNotExist.txt","w")
     wfile.writelines(item+'\n' for item in wordlist)
 
-combine()
+def combine2():
+    wordlist = getWordList()
+    wordNotExist = []
+    for line in open("../res/wordNotExist.txt"):
+        word  = line.strip()
+        if(word not in wordlist):
+            wordNotExist.append(word)
+    wfile = open("../res/wordNotExist2.txt","w")
+    wfile.writelines(item+'\n' for item in wordNotExist)
+
+combine2()
