@@ -4,17 +4,20 @@ import numpy as np
 import scipy.io as sio
 from scipy.sparse import csc_matrix
 from scipy.sparse import vstack
-def getreflist():
-    count=0
-    reflist = []
-    for line in open("../res/referenceCount.txt"):
-        if count==5000:break
-        reflist.append(line.split("----")[0])
-        count+=1
-    # arr = np.array(reflist)
-    # sio.savemat("reflist.mat",{"reflist":arr},oned_as='row')
-    # # np.save("../res/reflist.npy",arr)
-    return reflist
+from svd import svds12585 as svds
+from matTrans import wmTorm12585 as wmTorm
+
+# def getreflist():
+#     count=0
+#     reflist = []
+#     for line in open("../res/referenceCount.txt"):
+#         if count==5000:break
+#         reflist.append(line.split("----")[0])
+#         count+=1
+#     # arr = np.array(reflist)
+#     # sio.savemat("reflist.mat",{"reflist":arr},oned_as='row')
+#     # # np.save("../res/reflist.npy",arr)
+#     return reflist
 #
 # def getrellist(filename):
 #     rellist=[]
@@ -25,11 +28,11 @@ def getreflist():
 #     # np.save("../res/rellist.npy",arr)   #npy可不加
 #     return rellist
 
-# def getreflist():
-#     rellist=[]
-#     for line in open("../res/ref_eachRel_1500_11259.txt"):
-#         rellist.append(line.strip("\n"))
-#     return rellist
+def getreflist():
+    rellist=[]
+    for line in open("../res/ref_eachRel_800_6830.txt"):
+        rellist.append(line.strip("\n"))
+    return rellist
 
 def getrellist():
     rellist=[]
@@ -60,7 +63,7 @@ def getmatrixfile(sourcefile,word,destfile,reflist,rellist):
 #
 def getWordMat():
     source = u"I:/数据/word12585relation30/file_word/"
-    dest = u"I:/数据/word12585relation30/rel_30_ref_5000/file_word/file_word_mat/"
+    dest = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/file_word/file_word_mat/"
     # reflist=getreflist(u"I:/数据/statistic/referenceCount-112189530.txt")
     # rellist=getrellist(u"I:/数据/statistic/relations.txt")
     if not os.path.exists(dest):
@@ -84,6 +87,8 @@ def getWordMat():
 
 # test()
 getWordMat()
+wmTorm.wmTorm()
+svds.SVDs()
 # getreflist(u"I:/数据/statistic/referenceCount-112189530.txt")
 
 

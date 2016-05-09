@@ -48,10 +48,10 @@ def calculateSVDs(tolerance=0,dim = 400):
         # dests = u"I:/数据/word11247relation30/rel_svd_TFIDF/rel_matrix_s/rel_mat_latent_"
         # destus = u"I:/数据/word11247relation30/rel_svd_TFIDF/rel_matrix_lus/rel_mat_latent_"
 
-        source = u"I:/数据/word12585relation30/rel_30_ref_5000/file_word/file_word_mat/rel_matrix/rel_mat/"
+        source = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_matrix/rel_mat/"
         # dest = u"I:/数据/word12585relation30/rel_30_ref_5000/rel_svd/rel_matrix_ls/rel_mat_latent_"
         # dests = u"I:/数据/word11247relation30/rel_30_ref_TFIDF/ref_"+str(refdim)+u"_TFIDF/rel_svd/rel_matrix_s/rel_mat_latent_"
-        destus = u"I:/数据/word12585relation30/rel_30_ref_5000/rel_svd/rel_matrix_lus/rel_mat_latent_"
+        destus = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_svd/rel_matrix_lus/rel_mat_latent_"
 
         # source = u"I:/数据/word11247relation30/rel_30_diffref_TFIDF/ref_"+str(refdim)+u"_TFIDF/rel_matrix/rel_mat/"
         # dest = u"I:/数据/word11247relation30/rel_30_diffref_TFIDF/ref_"+str(refdim)+u"_TFIDF/rel_svd/rel_matrix_ls/rel_mat_latent_"

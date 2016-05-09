@@ -21,12 +21,11 @@ def getRelList():
     # np.save("../res/rellist.npy",arr)   #npy可不加
     return rellist
 
-def rel_30_ref_TFIDF():                      #每个relation-ref 表做一次tfidf
-    relpath = u"I:/数据/word11247relation30/sum_rel_ref_mat/result.mat"
-    dest = u"I:/数据/word11247relation30/sum_rel_ref_mat/"
+def rel_30_ref_TFIDF():
+    relpath = u"I:/数据/word12585relation30/sum_rel_ref_mat/result.mat"
+    dest = u"I:/数据/word12585relation30/sum_rel_ref_mat/"
     if not os.path.exists(dest):
                 os.makedirs(dest)
-    rellist = getRelList()
     transformer = TfidfTransformer()
     relmat = sio.loadmat(relpath)["result"]
     tfidf = transformer.fit_transform(relmat)

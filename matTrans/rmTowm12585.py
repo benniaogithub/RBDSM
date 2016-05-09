@@ -82,8 +82,8 @@ def rmTowmByGrouplus(dim = 500):       #一次将所有转成所有单词的mat 
     # dest = u"I:/数据/word11247relation30/file_word/word_mat_latent_"
     # source = u"I:/数据/word11247relation30/rel_30_ref_TFIDF/ref_"+str(refdim)+u"_TFIDF/rel_svd/rel_matrix_lus/rel_mat_latent_"
     # dest = u"I:/数据/word11247relation30/rel_30_ref_TFIDF/ref_"+str(refdim)+u"_TFIDF/rel_svd/file_word_lus/word_matus_latent_"
-    source = u"I:/数据/word12585relation30/rel_30_ref_5000/rel_svd/rel_matrix_lus/rel_mat_latent_"
-    dest = u"I:/数据/word12585relation30/rel_30_ref_5000/rel_svd/file_word_lus/word_mat_latent_"
+    source = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_svd/rel_matrix_lus/rel_mat_latent_"
+    dest = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_svd/file_word_lus/word_mat_latent_"
     # source = u"I:/数据/word11247relation30/test/rel_mat_latent_"
     # dest = u"I:/数据/word11247relation30/test/word_matus_latent_"
     source = source+str(dim)+u"/"
@@ -115,43 +115,6 @@ def rmTowmByGrouplus(dim = 500):       #一次将所有转成所有单词的mat 
             sio.savemat(dest+"l_"+key,{key:wordMats[key]})
         print("cost %s seconds" % (time.clock()-timeCheckin))
 
-def rmTowmByGroupls(refdim=300,dim = 500):
-    # source = u"I:/数据/word11247relation30/rel_matrix/rel_mat_latent_"
-    # dest = u"I:/数据/word11247relation30/file_word/word_mat_latent_"
-    # source = u"I:/数据/word11247relation30/rel_30_ref_TFIDF/ref_"+str(refdim)+u"_TFIDF/rel_svd/rel_matrix_ls/rel_mat_latent_"
-    # dest = u"I:/数据/word11247relation30/rel_30_ref_TFIDF/ref_"+str(refdim)+u"_TFIDF/rel_svd/file_word_ls/word_mat_latent_"
-    source = u"I:/数据/word11247relation30/rel_30_diffref_TFIDF/ref_"+str(refdim)+u"_TFIDF/rel_svd/rel_matrix_ls/rel_mat_latent_"
-    dest = u"I:/数据/word11247relation30/rel_30_diffref_TFIDF/ref_"+str(refdim)+u"_TFIDF/rel_svd/file_word_ls/word_mat_latent_"
-    # source = u"I:/数据/word11247relation30/test/rel_mat_latent_"
-    # dest = u"I:/数据/word11247relation30/test/word_matus_latent_"
-    source = source+str(dim)+u"/"
-    dest = dest+str(dim)+u"/"
-    if not os.path.exists(dest):
-            os.makedirs(dest)
-    wordlist = getWordList()
-    rellist = getRelList()
-    times = 3
-    groupSize = int(len(wordlist)/times)+1     #每次处理多单词
-    count = 0
-    for t in range(0,times):
-        startWordIndex = t*groupSize
-        endWordIndex = min(groupSize*(t+1),len(wordlist))
-        wordMats = {}
-        timeCheckin = time.clock()
-        for i in range(0,len(rellist)):
-            relName = rellist[i]
-            relMat = sio.loadmat(source+"r_"+relName+".mat")[relName]
-
-            if(len(wordMats) == 0):
-                print endWordIndex
-                for i in range(startWordIndex ,endWordIndex):
-                    wordMats[wordlist[i]] = relMat[i,:]
-            else:
-                for i in range(startWordIndex ,endWordIndex):
-                    wordMats[wordlist[i]] = vstack([wordMats[wordlist[i]],relMat[i,:]])
-        for key in wordMats.keys():
-            sio.savemat(dest+"l_"+key,{key:wordMats[key]})
-        print("cost %s seconds" % (time.clock()-timeCheckin))
 
 
 # rmTowm()
