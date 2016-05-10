@@ -44,7 +44,8 @@ def vecSimRow(x, y):
     return sim
 
 def wordlantCosSimRow(w1,w2):
-     root=u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_svd/file_word_lus/word_matus_latent_300/"
+     root = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_spc/spc_1_350/word_matrix/"
+
      # root = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_spc/spc_1_350/word_matrix/"
      # root = u"I:/数据/word12585relation30/rel_30_ref_5000/rel_svd/file_word_lus/word_mat_latent_350/"
      #
@@ -85,5 +86,5 @@ def SCTRow():
     rho, pval = stats.spearmanr(sdsmlist,wslist)
     print rho
 
-# SCTRow()
+SCTRow()
 # getWTFIDF()
