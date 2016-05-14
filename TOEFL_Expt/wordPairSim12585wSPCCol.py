@@ -9,8 +9,8 @@
 """
 
 import numpy as np
-from scipy import stats
 import scipy.io as sio
+
 def getWTFIDF():
     wArr = sio.loadmat(u"I:/数据/word12585relation30/weight/wTFIDF.mat")["wTFIDF"][0]
     # print(wArr)

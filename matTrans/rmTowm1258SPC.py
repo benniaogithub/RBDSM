@@ -44,8 +44,8 @@ def rmTowmByGroup():       #一次将所有转成所有单词的mat 内存不够
     # dest = u"I:/数据/word11247relation30/file_word/word_mat_latent_"
     # source = u"I:/数据/word11247relation30/rel_30_ref_TFIDF/ref_"+str(refdim)+u"_TFIDF/rel_svd/rel_matrix_lus/rel_mat_latent_"
     # dest = u"I:/数据/word11247relation30/rel_30_ref_TFIDF/ref_"+str(refdim)+u"_TFIDF/rel_svd/file_word_lus/word_matus_latent_"
-    source = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_spc/spc_1_350/rel_matrix/"
-    dest = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_spc/spc_1_350/word_matrix/"
+    source = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_spc/spc_4_64/rel_matrix/"
+    dest = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_spc/spc_4_64/word_matrix/"
     # source = u"I:/数据/word11247relation30/test/rel_mat_latent_"
     # dest = u"I:/数据/word11247relation30/test/word_matus_latent_"
     # source = source+str(dim)+u"/"
@@ -64,7 +64,7 @@ def rmTowmByGroup():       #一次将所有转成所有单词的mat 内存不够
         timeCheckin = time.clock()
         for i in range(0,len(rellist)):
             relName = rellist[i]
-            relMat = sio.loadmat(source+"r_"+relName+".mat")["spcRelmat"]
+            relMat = sio.loadmat(source+"r_"+relName+".mat")["dataFeature"]
 
             if(len(wordMats) == 0):
                 print endWordIndex

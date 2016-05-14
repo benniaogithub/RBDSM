@@ -86,9 +86,9 @@ def getWordMat():
 #     getmatrixfile(source+"con.txt",dest+"con.txt".strip(".txt")  ,reflist,rellist)
 
 # test()
-getWordMat()
-wmTorm.wmTorm()
-svds.SVDs()
+# getWordMat()
+# wmTorm.wmTorm()
+# svds.SVDs()
 # getreflist(u"I:/数据/statistic/referenceCount-112189530.txt")
 
 

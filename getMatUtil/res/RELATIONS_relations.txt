@@ -1,0 +1,9 @@
+Antonym
+Synonym
+IsA
+HasProperty
+PartOf
+Entails
+HasA
+MadeOf
+MemberOf

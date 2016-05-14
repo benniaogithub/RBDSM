@@ -48,7 +48,7 @@ def vecSimCol(x, y):
 
 
 def wordlantCosSimCol(w1,w2):
-     root = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_spc/spc_1_350/word_matrix/"
+     root = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_spc/spc_4_64/word_matrix/"
 
      # root = u"I:/数据/word12585relation30/rel_30_ref_5000/rel_svd/file_word_lus/word_mat_latent_350/"
      #
@@ -58,7 +58,7 @@ def wordlantCosSimCol(w1,w2):
      # print(w1Mat)
      w2Mat = sio.loadmat(root+u"l_"+w2)[w2]
      sim = 0.0
-     print np.shape(w1Mat)[0]
+     # print np.shape(w1Mat)[0]
      # for i in range(0,np.shape(w1Mat)[0]):         #单词按参考词的条件概率   一列一列算相似度
      #    sim = vecSim(w1Mat[i,:],w2Mat[i,:])+sim
      #    # print sim/np.shape(w1Mat)[1]
@@ -81,7 +81,7 @@ def SCTCol():
         if w1 in wordList and w2 in wordList:
             sim1 = wordlantCosSimCol(w1,w2)
             sim2 = line.strip("\n").split("\t")[-1]
-            print sim2
+            print sim1
             wslist.append(sim1)
             sdsmlist.append(sim2)
             print count

@@ -42,7 +42,7 @@ def getWordList():
     # arr = np.array(wordList)
     return  wordList
 
-def calculateSVDs(tolerance=0,dim = 400):
+def calculateSVDs(tolerance=0.0001,dim = 400):
         # source = u"I:/数据/word11247relation30/rel_matrix/rel_mat_TFIDF/"
         # dest = u"I:/数据/word11247relation30/rel_svd_TFIDF/rel_matrix_ls/rel_mat_latent_"
         # dests = u"I:/数据/word11247relation30/rel_svd_TFIDF/rel_matrix_s/rel_mat_latent_"
@@ -91,16 +91,16 @@ def calculateSVDs(tolerance=0,dim = 400):
             print(" cost %s seconds" % (time.clock()-timeCheckin))
 
 def SVDs():
-    calculateSVDs(tolerance=0.001,dim = 350 )
-    calculateSVDs(tolerance=0.001,dim = 300)
+    calculateSVDs(tolerance=0.001,dim = 324 )
+    # calculateSVDs(tolerance=0.001,dim = 3240)
     # calculateSVDs(tolerance=0.001,refdim=refdim,dim = 400)
     # calculateSVDs(tolerance=0.001,refdim=refdim,dim = 500)
     # calculateSVDs(tolerance=0.001,dim = 800)
     # calculateSVDs(tolerance=0.001,dim = 1000)
     # calculateSVDs(tolerance=0.001,dim = 1200)
     # calculateSVDs(tolerance=0.001,dim = 1500)
-    rmTowm.rmTowmByGrouplus(dim = 300)
-    rmTowm.rmTowmByGrouplus(dim = 350)
+    rmTowm.rmTowmByGrouplus(dim = 324)
+    # rmTowm.rmTowmByGrouplus(dim = 350)
 
 
 SVDs()

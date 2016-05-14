@@ -123,7 +123,7 @@ def rmTowmByGrouplus(dim = 500):       #一次将所有转成所有单词的mat 
 # rmTowmByGroup(800)
 # rmTowmByGroup(1000)
 # rmTowmByGroup(1200)
-# rmTowmByGroup(300)
+rmTowmByGrouplus(324)
 # rmTowmByGroup(250)
 # rmTowmByGroup(400)
 # rmTowmByGroupOrig()
