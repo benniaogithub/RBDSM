@@ -17,7 +17,7 @@ np.set_printoptions(threshold='nan')
 
 
 def getWordList():
-    rfile = open(u"I:/实验/senna/senna/words.txt")
+    rfile = open(u"I:/数据/embedings/senna/words.txt")
     wordList = []
     for line in rfile:
         wordList.append(line.strip("\n"))

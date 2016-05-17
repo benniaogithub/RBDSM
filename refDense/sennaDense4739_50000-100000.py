@@ -70,21 +70,20 @@ def vecSim(x, y):
     return sim
 
 def getDelRefMap():
-
      delRefList = getdelRef()
      chosedRef = getRefList()
      WordEmbedding = getEmbedding.getEmbeddingMat_senna()
      SennaList = getSennaList()
      refmap = open("res/sennaMap_4739_1-20000.txt").readlines()
      # count = 0
-
-     for i in range(0,50000):
+     # start = len(refmap)
+     for i in range(50000,100000):
         word1 = delRefList[i]
 
         print(i)
         # count += 1
-        if i%1 == 0:
-            wfile =  open("res/sennaMap_4739_1-20000.txt","w")
+        if i%100 == 0:
+            wfile =  open("res/sennaMap_4739_D.txt","w")
             wfile.writelines(item+'\n' for item in refmap)
         if word1 not in SennaList:
             continue
@@ -102,7 +101,7 @@ def getDelRefMap():
         print(item)
         refmap.append(item)
 
-     wfile =  open("res/sennaMap_4739_1-20000.txt","w")
+     wfile =  open("res/sennaMap_4739_D.txt","w")
      wfile.writelines(item+'\n' for item in refmap)
 
 def Out_of_order():

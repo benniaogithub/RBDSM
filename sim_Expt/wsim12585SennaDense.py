@@ -11,13 +11,26 @@
 import numpy as np
 from scipy import stats
 import scipy.io as sio
+np.set_printoptions(threshold='nan')
+
 def getWTFIDF():
-    wArr = sio.loadmat(u"I:/数据/word12585relation30/weight/wTFIDF.mat")["wTFIDF"][0]
+    wArr = sio.loadmat(u"I:/数据/word12585relation30/weight/wTFIDF2.mat")["wTFIDF"][0]
     # print(wArr)
     # arr = np.array(wordList)
     return  wArr
 
 wArr = getWTFIDF()
+def getWordList():
+    rfile = open("../res/vocab.txt")
+    wordList = []
+    for line in rfile:
+        wordList.append(line.strip("\n"))
+    rfile.close()
+    # arr = np.array(wordList)
+    return  wordList
+
+
+
 def vecSimCol(x, y):
     # result1 = x.T.dot(y)
     # result1 =  result1.tolist()[0][0]           #svd 之前的稀疏原始矩阵用这个
@@ -34,8 +47,8 @@ def vecSimCol(x, y):
     return sim
 
 
-def wordlantCosSim(w1,w2):
-     root=u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/file_word_senna_dense/rel_svd/file_word_lus/word_mat_latent_324/"
+def wordlantCosSimCol(w1,w2):
+     root = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/file_word_senna_dense/rel_spc/word_matrix_256/"
 
      # root = u"I:/数据/word12585relation30/rel_30_ref_5000/rel_svd/file_word_lus/word_mat_latent_350/"
      #
@@ -55,3 +68,27 @@ def wordlantCosSim(w1,w2):
         sim = vecSimCol(w1Mat[:,i],w2Mat[:,i])+sim
         # print sim/np.shape(w1Mat)[1]
      return sim/np.shape(w1Mat)[1]
+
+def SCTCol():
+
+    wslist = []
+    sdsmlist = []
+    count = 1
+    wordList = getWordList()
+    for line in open("../res/WS-353.txt"):
+        w1 = line.split("\t")[0]
+        w2 = line.split("\t")[1]
+        if w1 in wordList and w2 in wordList:
+            sim1 = wordlantCosSimCol(w1,w2)
+            sim2 = line.strip("\n").split("\t")[-1]
+            print sim1
+            wslist.append(sim1)
+            sdsmlist.append(sim2)
+            print count
+            count += 1
+    rho, pval = stats.spearmanr(sdsmlist,wslist)
+    print rho
+
+SCTCol()
+
+# getWTFIDF()

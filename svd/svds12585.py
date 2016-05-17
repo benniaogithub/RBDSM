@@ -11,7 +11,7 @@ from scipy.sparse.linalg import svds
 import scipy.io as sio
 import time
 import os
-from matTrans import rmTowm12585 as rmTowm
+# from matTrans import rmTowm12585 as rmTowm
 # from scipy.sparse import hstack
 # import numpy as np
 
@@ -48,10 +48,10 @@ def calculateSVDs(tolerance=0.0001,dim = 400):
         # dests = u"I:/数据/word11247relation30/rel_svd_TFIDF/rel_matrix_s/rel_mat_latent_"
         # destus = u"I:/数据/word11247relation30/rel_svd_TFIDF/rel_matrix_lus/rel_mat_latent_"
 
-        source = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_matrix/rel_mat/"
+        source = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/file_word_senna_dense/rel_matrix/rel_mat/"
         # dest = u"I:/数据/word12585relation30/rel_30_ref_5000/rel_svd/rel_matrix_ls/rel_mat_latent_"
         # dests = u"I:/数据/word11247relation30/rel_30_ref_TFIDF/ref_"+str(refdim)+u"_TFIDF/rel_svd/rel_matrix_s/rel_mat_latent_"
-        destus = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_svd/rel_matrix_lus/rel_mat_latent_"
+        destus = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/file_word_senna_dense/rel_svd/rel_matrix_lus/rel_mat_latent_"
 
         # source = u"I:/数据/word11247relation30/rel_30_diffref_TFIDF/ref_"+str(refdim)+u"_TFIDF/rel_matrix/rel_mat/"
         # dest = u"I:/数据/word11247relation30/rel_30_diffref_TFIDF/ref_"+str(refdim)+u"_TFIDF/rel_svd/rel_matrix_ls/rel_mat_latent_"
@@ -99,7 +99,7 @@ def SVDs():
     # calculateSVDs(tolerance=0.001,dim = 1000)
     # calculateSVDs(tolerance=0.001,dim = 1200)
     # calculateSVDs(tolerance=0.001,dim = 1500)
-    rmTowm.rmTowmByGrouplus(dim = 324)
+    # rmTowm.rmTowmByGrouplus(dim = 324)
     # rmTowm.rmTowmByGrouplus(dim = 350)
 
 

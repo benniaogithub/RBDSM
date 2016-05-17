@@ -14,6 +14,8 @@ import numpy as np
 import scipy.io as sio
 from getMatUtil import getWordEmbedding as getEmbedding
 import random
+import multiprocessing
+import time
 
 def getAllReft():
     rfile = open(u"../res/ref.txt")
@@ -40,7 +42,7 @@ def getSennaList():
     return  wordList
 
 def getdelRef():
-    rfile = open("res/DeleteRef_4739_2.txt")
+    rfile = open("res/DeleteRef_4739.txt")
     wordList = []
     for line in rfile:
         wordList.append(line.strip("\n"))
@@ -69,41 +71,55 @@ def vecSim(x, y):
     sim = 0.5+0.5*cos
     return sim
 
-def getDelRefMap():
 
-     delRefList = getdelRef()
-     chosedRef = getRefList()
-     WordEmbedding = getEmbedding.getEmbeddingMat_senna()
-     SennaList = getSennaList()
-     refmap = open("res/sennaMap_4739_1-20000.txt").readlines()
-     # count = 0
+delRefList = getdelRef()
+chosedRef = getRefList()
+WordEmbedding = getEmbedding.getEmbeddingMat_senna()
+SennaList = getSennaList()
+refmap = []
+# count = 0
 
-     for i in range(0,50000):
+def getDelRefMap(lock,index):
+     count = 0
+     for i in range(index,index*30000):
         word1 = delRefList[i]
-
-        print(i)
+     # for word1 in delRefList:
+        # print(count)
         # count += 1
-        if i%1 == 0:
-            wfile =  open("res/sennaMap_4739_1-20000.txt","w")
-            wfile.writelines(item+'\n' for item in refmap)
+
+        print(count)
+
         if word1 not in SennaList:
             continue
+        lock.acquire()
         w1vec = WordEmbedding[SennaList.index(word1),:]
+        lock.release()
         sim = []
         for word2 in chosedRef:
             if word2 not in SennaList:
                 sim.append(0)
                 continue
+            lock.acquire()
             w2vec = WordEmbedding[SennaList.index(word2),:]
+            lock.release()
             sim.append(vecSim(w1vec,w2vec))
         chosed = chosedRef[np.argmax(sim)]
 
         item = word1+"\t"+chosed
         print(item)
         refmap.append(item)
-
-     wfile =  open("res/sennaMap_4739_1-20000.txt","w")
+        count += 1
+        # print(refmap)
+        # break
+     wfile =  open("res/sennaMap_4739.txt","w")
      wfile.writelines(item+'\n' for item in refmap)
+
+def master():
+    for i in range(0,10):
+        lock = multiprocessing.Lock()
+        p = multiprocessing.Process(target = getDelRefMap, args=(lock,i))
+        time.sleep(10)
+        p.start()
 
 def Out_of_order():
     delDef = getdelRef()
@@ -118,4 +134,5 @@ def Out_of_order():
     wfile.writelines(item+'\n' for item in newDelDef)
 
 # Out_of_order()
-getDelRefMap()
+# getDelRefMap()
+master()

@@ -1,0 +1,66 @@
+#!/usr/bin/env python
+# encoding: utf-8
+
+"""
+@author: yx@xy
+@license: Apache Licence 
+@file: test.py
+@time: 2016/5/15 13:56
+"""
+from nltk.corpus import wordnet as wn
+
+def getdelRef():
+    rfile = open("res/DeleteRef_4739_2.txt")
+    wordList = []
+    for line in rfile:
+        wordList.append(line.strip("\n"))
+    rfile.close()
+    return  wordList
+
+def getRefList():
+    rfile = open(u"../res/ref_eachRel_500_4739.txt")
+    wordList = []
+    for line in rfile:
+        wordList.append(line.strip("\n"))
+    rfile.close()
+    return  wordList
+
+def getDelRefMapSyn():
+
+     delRefList = getdelRef()
+     # print delRefList
+     chosedRef = getRefList()
+     refmap =[]
+     for i in range(0,len(delRefList)):
+        word1 = delRefList[i]
+        print(i)
+        wordSynset = wn.synsets(word1)
+        if not len(wordSynset) == 0:
+            # print(wordSynset)
+            chosed = False
+            que = []
+            pop = -1
+            push = -1
+            for i in range(len(wordSynset)):
+                que.append(wordSynset[i])
+                push += 1
+            while not chosed and pop < push :
+                # print("_________"+str(len(que)))
+                pop += 1
+                word2 = que[pop].name().split(".")[0]
+                print("------------"+word2)
+                if(word2 in chosedRef):
+                    item = word1+"\t"+word2
+                    print(item)
+                    chosed = True
+                    refmap.append(item)
+                    break
+                wordSynset = que[pop].hypernyms()
+                for i in range(len(wordSynset)):
+                    que.append(wordSynset[i])
+                    push += 1
+
+     wfile =  open("res/wordnetMap_4739_synset.txt","w")
+     wfile.writelines(item+'\n' for item in refmap)
+
+getDelRefMapSyn()

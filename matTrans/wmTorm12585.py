@@ -38,8 +38,8 @@ def wmTorm():
         # dest = u"I:/数据/word11247relation30/rel_matrix/rel_mat/"
         # source = u"I:/数据/word11247relation30/rel_30_ref_TFIDF/ref_"+str(refdim)+u"_TFIDF/file_word/file_word_mat/"
         # dest = u"I:/数据/word11247relation30/rel_30_ref_TFIDF/ref_"+str(refdim)+u"_TFIDF/rel_matrix/rel_mat/"
-        source = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/file_word/file_word_mat/"
-        dest = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_matrix/rel_mat/"
+        source = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/file_word_senna_dense/file_word_mat/"
+        dest = u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/file_word_senna_dense/rel_matrix/rel_mat/"
         if not os.path.exists(dest):
             os.makedirs(dest)
         rellist = getRelList()
@@ -75,4 +75,4 @@ def wmTorm():
         print("cost %s seconds" % (time.clock()-timeCheckin))
 
 # wmTorm(refdim=1000)
-# wmTorm()
+wmTorm()

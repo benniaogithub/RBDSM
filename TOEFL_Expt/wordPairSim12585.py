@@ -26,8 +26,8 @@ def vecSim(x, y):
     return sim
 
 def wordlantCosSim(w1,w2):
-     root=u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_svd/file_word_lus/word_matus_latent_350/"
-
+     # root=u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/rel_svd/file_word_lus/word_matus_latent_350/"     0.826666666667
+     root=u"I:/数据/word12585relation30/rel_30_ref_TFIDF/ref_800_TFIDF/file_word_senna_dense/rel_svd/rel_svd_324/file_word_lus/word_mat_latent_324/"  #0.853333333333
      # root = u"I:/数据/word12585relation30/rel_30_ref_5000/rel_svd/file_word_lus/word_mat_latent_300/"
      #
      # w1Mat = sio.loadmat(root+u"l_"+w1)[w1]
